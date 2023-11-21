@@ -1,4 +1,4 @@
-const objectsArray = [{
+let objectsArray = [{
     id: 1,
     name: "Stray Kids",
     photo: "./straykids.jpg"
@@ -42,24 +42,14 @@ function render(){
             const clone = {...objectsArray[0], id: objectsArray.length+1}
             objectsArray.push(clone)
             render()
-        })                        
+        })      
     }
-
 }
-
-render()
 
 select.addEventListener("change", (e) => {
     const cloneId = +e.target.value;
+    objectsArray = objectsArray.filter((object) => object.id !== cloneId);
+    render()
 })
 
-
-// select.addEventListener("change", (e) => {
-//     // how can i console the id of the dragon that was selected?
-//     const dragonId = +e.target.value;
-//     // we need to look through our array of dragon and find one with the id of our dragonId
-  
-//     selectedDragon = dragons.filter((dragon) => dragon.id === dragonId)[0];
-//     render();
-//   });
-
+render()
